@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Jogo Dos Dados</title>
+    <style>
+        body
+        {
+            margin:0;
+            overflow:hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../js/montarTela.js"></script>
+    <script src="../js/buscarDados.js"></script>
+</head>
+<body>
+    <div class="central" style="background-image: url('../img/competition-3061509_1920.jpg');">
+        <br/>
+        <div class="central">
+            <label for="njogo">Numero Do Jogo </label>
+            <input type="text" id="njogo" name="njogo"><br><br>
+            <label for="nome">Jogador  </label>
+            <input type="text" id="nome" name="nome"><br><br>
+            <input id="submitRequest" class="central" type="submit" value="Submit" onclick="getParametrosJogo();">
+            <input id = "parametrosJogo" type="hidden" value="">
+        </div>
+        <div id="telaJogo"><canvas id="canvas"></canvas></div>
+    </div>
+</body> 
+</html>
