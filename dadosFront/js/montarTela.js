@@ -181,16 +181,19 @@ function desenhaFundoFinal(){
 }
 
 function upDate(){
-    
-    var dadosJogo = document.getElementById("parametrosJogo").value;
-    
-    if(fase > 5){
-        desenhaFundoFinal();
-        finalizado = true;
-    }else if(dadosJogo != null && dadosJogo != undefined && dadosJogo != ""){
-        desenhaFundo();
-    }else{
-        desenhaFundoSemDados();
+    try{
+        var dadosJogo = document.getElementById("parametrosJogo").value;
+        
+        if(fase > 5){
+            desenhaFundoFinal();
+            finalizado = true;
+        }else if(dadosJogo != null && dadosJogo != undefined && dadosJogo != ""){
+            desenhaFundo();
+        }else{
+            desenhaFundoSemDados();
+        }
+    }catch(e){
+        console.log(e);
     }
 }
 
@@ -199,7 +202,7 @@ window.onload = function () {
     upDate();    
 };
 
-window.onmousemove = function(){
+function change(){
     var data = document.getElementById("parametrosJogo").value;
     if(data != null && data != ""){
         telaJogo.dadosJogo = JSON.parse(data);
@@ -207,6 +210,12 @@ window.onmousemove = function(){
     
     upDate();
 }
+
+window.onmousemove = function(){
+    change();
+}
+
+window.setInterval(change, 25);
 
 function verificaResultado(valor){
     var faseAtual = telaJogo.dadosJogo.fases.fases[fase]
