@@ -42,6 +42,8 @@ var telaJogo = {
     n10 : iniciarImagem('../img/10.png'),
     n11 : iniciarImagem('../img/11.png'),
     n12 : iniciarImagem('../img/12.png'),
+    imgSoma : iniciarImagem('../img/soma.png'),
+    imgSubtrai : iniciarImagem('../img/subtrai.png'),
     posN1 : [],
     posN2 : [],
     posN3 : [],
@@ -72,6 +74,12 @@ var telaJogo = {
                 return null;
         }
 
+    },
+    retornaSimbolo : function(soma){
+    	if(soma == true || soma == "true"){
+    		return this.imgSoma;
+    	}
+    	return this.imgSubtrai;
     }
 }
 
@@ -146,7 +154,8 @@ function desenhaFundo(){
         var faseAtual = telaJogo.dadosJogo.fases.fases[fase]
 
         ctx.drawImage(telaJogo.retornaDado(String(faseAtual.n1)), ((largura / 2) - 300), 20);
-        ctx.drawImage(telaJogo.retornaDado(String(faseAtual.n2)), ((largura / 2) + 90), 20);    
+        ctx.drawImage(telaJogo.retornaDado(String(faseAtual.n2)), ((largura / 2) + 90), 20);
+        ctx.drawImage(telaJogo.retornaSimbolo(String(faseAtual.soma)), ((largura / 2) + -30), 90);    
     }
 }
 
@@ -219,9 +228,16 @@ window.setInterval(change, 25);
 
 function verificaResultado(valor){
     var faseAtual = telaJogo.dadosJogo.fases.fases[fase]
-    if((faseAtual.n1 + faseAtual.n2) == valor){
-        return true;
+    if(faseAtual.soma){
+    	if((faseAtual.n1 + faseAtual.n2) == valor){
+        	return true;
+    	}
+    }else{
+    	if((faseAtual.n1 - faseAtual.n2) == valor){
+        	return true;
+    	}
     }
+    
     return false;
 }
 

@@ -43,7 +43,7 @@ function getParametrosJogo(){
     var numeroJogo = document.getElementById("njogo").value;
     var nome = document.getElementById("nome").value;
     var parametrosJogo = document.getElementById("parametrosJogo");
-    var url = "http://ec2-54-245-67-209.us-west-2.compute.amazonaws.com/api/jogo/jogar?id="+numeroJogo;
+    var url = "http://localhost/api/jogo/jogar?id="+numeroJogo;
     if(nome != null && nome != undefined && nome != ""){
         if(numeroJogo != null && numeroJogo != undefined && numeroJogo != ""){
             console.log("numero Jogo : "+numeroJogo);
@@ -59,7 +59,7 @@ function getParametrosJogo(){
 
 function postResultado(){
     var resultado =  document.getElementById("concluido").value;
-    var url = "http://ec2-54-245-67-209.us-west-2.compute.amazonaws.com/api/jogo/resultados";
+    var url = "http://localhost/api/jogo/resultados";
     try {
         var response = JSON.parse(postRequest(url, null, resultado));
         if(response.error != null){
